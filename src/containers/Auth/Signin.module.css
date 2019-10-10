@@ -1,0 +1,35 @@
+.Signin {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100vh;
+}
+
+.overall{
+    background-Image:linear-gradient(#7bb7f8ee, #ffffff);
+}
+
+.myLink{
+    text-align: right;
+    position: relative;
+    top: 40px;
+    right: 50px;
+}
+.text{
+    color:gray;
+    text-align: center;
+    font-weight: bold;
+}
+
+.myLogo{
+    text-align: center;
+}
+
+@media (min-width: 600px) {
+    .Signin {
+        width: 500px;
+    }
+}
