@@ -4,6 +4,8 @@
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
+    position: relative;
+    min-height: 100vh;
 }
 
 .overall{

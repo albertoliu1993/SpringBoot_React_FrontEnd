@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
@@ -123,12 +123,17 @@ class Signin extends Component {
         }
 
         let errorMessage = null;
-
         if (this.props.error) {
             errorMessage = (
                 <p>{this.props.error.errorMessage}</p>
             )
         }
+        
+        let authRedirect = null;
+        if(this.props.isAuthenticated){
+            authRedirect = <Redirect to="/search" />
+        }
+
         return (
             <div className={classes.overall}>
                 <div className={classes.myLink}>
@@ -153,7 +158,8 @@ class Signin extends Component {
 const mapStateToProps = (state) => {
     return {
         loading: state.auth.loading,
-        error: state.auth.error
+        error: state.auth.error,
+        isAuthenticated: state.auth.token !== null,
     }
 }
 

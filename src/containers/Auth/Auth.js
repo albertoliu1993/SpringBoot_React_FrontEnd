@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
+import Spinner from  '../../components/Spinner/Spinner';
 import classes from './Auth.module.css'
 import * as actions from '../../store/actions/index';
 import logo from '../../assets/logo.png';
@@ -54,7 +56,7 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             }
-        }
+        },
     }
 
     checkValidity(value, rules) {
@@ -98,6 +100,8 @@ class Auth extends Component {
                 touched: true
             }
         };
+        console.log(updatedControls);
+        console.log(this.state);
         this.setState({ controls: updatedControls });
     }
 
@@ -118,7 +122,7 @@ class Auth extends Component {
             });
         }
 
-        const form = formElementsArray.map(formElement => (
+        let form = formElementsArray.map(formElement => (
             <Input
                 key={formElement.id}
                 elementType={formElement.config.elementType}
@@ -129,6 +133,25 @@ class Auth extends Component {
                 touched={formElement.config.touched}
                 changed={(event) => this.inputChangedHandler(event, formElement.id)} />
         ));
+
+        if (this.props.loading) {
+            form = <Spinner />
+        }
+
+        let errorMessage = null;
+
+        if (this.props.error) {
+            errorMessage = (
+                <p>{this.props.error.message}</p>
+            );
+        }
+
+        let authRedirect = null;
+        if (this.props.isAuthenticated) {
+            authRedirect = <Redirect to={this.props.authRedirectPath}/>
+        }
+
+
         return (
             <div className={classes.overall}>
                 <div className={classes.myLogo}>
@@ -136,6 +159,8 @@ class Auth extends Component {
                 </div>
                 <p className={classes.text}>Building Products Selection Platform</p>
                 <div className={classes.Auth}>
+                {authRedirect}
+                {errorMessage}
                     <form onSubmit={this.submitHandler}>
                         {form}
                         <Button btnType="Success">Submit</Button>
@@ -147,10 +172,21 @@ class Auth extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        onAuth: (username, email, password) => dispatch(actions.auth(username, email, password))
+        loading: state.auth.loading,
+        error: state.auth.error,
+        isAuthenticated: state.auth.token !== null,
+        authRedirectPath: state.auth.authRedirectPath
     };
 };
 
-export default connect(null, mapDispatchToProps)(Auth);
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (username, email, password,) => dispatch(actions.auth(username, email, password)),
+        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/signup'))
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

@@ -1,3 +1,11 @@
+.Search{
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 .overall{
     background-Image:linear-gradient(#7bb7f8ee, #ffffff);
 }
@@ -16,10 +24,6 @@
 
 .myLogo{
     text-align: center;
+    padding-top: 150px;
 }
 
-@media (min-width: 600px) {
-    .Signin {
-        width: 500px;
-    }
-}
