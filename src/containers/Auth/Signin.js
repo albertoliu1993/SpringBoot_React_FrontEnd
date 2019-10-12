@@ -145,6 +145,7 @@ class Signin extends Component {
                 <p className={classes.text}>Building Products Selection Platform</p>
                 <div className={classes.Signin}>
                     {errorMessage}
+                    {authRedirect}
                     <form onSubmit={this.submitHandler}>
                         {form}
                         <Button btnType="Success">Login</Button>

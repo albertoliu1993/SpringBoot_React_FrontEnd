@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
-import 'semantic-ui-css/semantic.min.css';
 
 import Auth from './containers/Auth/Auth';
 import Signin from './containers/Auth/Signin';
 import Search from './containers/SearchPage/search';
+import Products from './containers/ProductPage/products';
 import * as actions from './store/actions/index'
 
 class App extends Component {
@@ -15,6 +15,7 @@ class App extends Component {
       <Switch>
         <Route path="/signup" component={Auth} />
         <Route path="/" exact component={Signin} />
+        <Route path="/products" component={Products} />
         <Redirect to="/" />
       </Switch>
     );

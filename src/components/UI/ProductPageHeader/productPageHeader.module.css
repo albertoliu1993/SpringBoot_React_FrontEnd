@@ -1,0 +1,24 @@
+.Header{
+    background-image: linear-gradient(to right,#7bb7f8ee, #ffffff);
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.MyLogo{
+    margin: 40px;
+}
+
+.MyInput{
+    text-align: center;
+    position: relative;
+    left: 300px;
+    background-color: lightgray;
+}
+.MyJoint{
+    position: relative;
+    left: 700px;
+}

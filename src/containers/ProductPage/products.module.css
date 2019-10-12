@@ -1,0 +1,18 @@
+.SideBar{
+    display: inline-block;
+    width: 21.75%;
+    vertical-align: top;
+    margin-right: -1.5px;
+    border-right: 1.5px solid lightgray;
+    border-bottom: 1.5px solid lightgray;
+    /*
+    min-height: 500px;
+    */
+    position: relative;
+    top: 80px;
+}
+
+.MySearch{
+    width: 21.75%;
+    display: inline-block;
+}
