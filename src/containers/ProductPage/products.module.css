@@ -1,18 +1,105 @@
 .SideBar{
+    position: fixed;
+    top: 80px;
     display: inline-block;
     width: 21.75%;
     vertical-align: top;
     margin-right: -1.5px;
     border-right: 1.5px solid lightgray;
     border-bottom: 1.5px solid lightgray;
-    /*
-    min-height: 500px;
-    */
-    position: relative;
-    top: 80px;
 }
 
 .MySearch{
-    width: 21.75%;
+    display: inline;
+    padding:5px;
+    text-align: right;
+}
+
+.MaxYearInput{
+    margin: 0%;
+    padding: 0%;
+    width: 15%;
+    height: 1.4em,
+}
+
+.MinYearInput{
+    margin: 0%;
+    padding: 0%;
+    width: 15%;
+    height: 1.4em,
+}
+
+.SideBarBlockTitle{
+    color: #5e5b5b;
+    text-align: left;
+    font-size: 0.8em;
+    vertical-align: middle;
+    padding: 0.1em 0em 0.1em 2%;
+    width: 98%;
+    margin: 0.1em 0.1em 0.1em 0em;
+}
+
+.DivBoxTitle{
+    display: inline;
+    color: #5e5b5b;
+    font-weight:bold;
+}
+
+.minAirFlow{
+    text-align: center;
+    display:inline-flex;
+    margin: 2%;
+    padding: 0%;
+    width: 21.5%;
+    height: 1.4em,
+}
+
+.Body{
+    position: fixed;
+    top:80px;
+    left: 23em;
+}
+
+.proinfo{
     display: inline-block;
+    border: 1px solid lightgray;
+    width: 200px;
+    height: 300px;
+    margin: 0.5em;
+}
+
+.Breadcrumb{
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.nav{
+    font-weight: bold;
+    color:rgb(36, 36, 163);
+    text-align: center;
+}
+
+.infobox{
+    text-align: center;
+}
+
+.infobox2{
+    background-color: rgb(221, 217, 217);
+}
+
+.para{
+    text-align: center;
+    margin:0;
+}
+
+.para2{
+    text-align: center;
+    color: red;
+    margin:0;
+}
+
+.add{
+    background-color: rgb(50, 50, 228);
+    font-family: Arial, Helvetica, sans-serif;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Dropdown, Input } from 'semantic-ui-react';
-import classes from './inputWithDataList.module.css';
 
 const options = [
   { key: 'fan', text: 'HVAC Fans', value: 'fan' },

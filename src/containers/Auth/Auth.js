@@ -58,6 +58,9 @@ class Auth extends Component {
             }
         },
     }
+    componentDidMount() {
+        console.log(this.props);
+    }
 
     checkValidity(value, rules) {
         let isValid = true;
@@ -109,6 +112,7 @@ class Auth extends Component {
         event.preventDefault();
         this.props.onAuth(this.state.controls.userName.value, this.state.controls.email.value,
             this.state.controls.password.value);
+        this.props.history.push('/');
     }
 
 
@@ -184,7 +188,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (username, email, password,) => dispatch(actions.auth(username, email, password)),
-        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/signup'))
+        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
     };
 };
 

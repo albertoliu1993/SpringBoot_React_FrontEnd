@@ -1,10 +1,11 @@
 export {
     auth,
-    logout,
-    setAuthRedirectPath,
     authCheckState
 } from './auth'
 
 export{
-    signin
+    signin,
+    logout,
+    setAuthRedirectPath,
 } from './signin'
+

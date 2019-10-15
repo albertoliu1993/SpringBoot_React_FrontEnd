@@ -46,6 +46,10 @@ class Signin extends Component {
         }
     }
 
+    componentDidMount(){
+        console.log(this.props);
+    }
+
     checkValidity(value, rules) {
         let isValid = true;
         if (!rules) {
@@ -93,8 +97,8 @@ class Signin extends Component {
     submitHandler = (event) => {
         event.preventDefault();
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
+        this.props.history.push("/search");
     }
-
 
     render() {
 
@@ -131,7 +135,7 @@ class Signin extends Component {
         
         let authRedirect = null;
         if(this.props.isAuthenticated){
-            authRedirect = <Redirect to="/search" />
+            authRedirect = <Redirect to={this.props.authRedirectPath}></Redirect>
         }
 
         return (
@@ -144,12 +148,12 @@ class Signin extends Component {
                 </div>
                 <p className={classes.text}>Building Products Selection Platform</p>
                 <div className={classes.Signin}>
-                    {errorMessage}
-                    {authRedirect}
                     <form onSubmit={this.submitHandler}>
                         {form}
-                        <Button btnType="Success">Login</Button>
+                        <Button btnType="Success" onClick={this.onClickHandler}>Login</Button>
                     </form>
+                    {errorMessage}
+                    {authRedirect}
                 </div>
             </div>
         );
@@ -161,12 +165,14 @@ const mapStateToProps = (state) => {
         loading: state.auth.loading,
         error: state.auth.error,
         isAuthenticated: state.auth.token !== null,
-    }
-}
+        authRedirectPath: state.auth.authRedirectPath
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password) => dispatch(actions.signin(email, password))
+        onAuth: (email, password) => dispatch(actions.signin(email, password)),
+        onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
     };
 };
 

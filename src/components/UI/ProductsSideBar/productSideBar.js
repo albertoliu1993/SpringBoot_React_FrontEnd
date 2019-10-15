@@ -1,10 +1,10 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
 import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 const ExpansionPanel = withStyles({
   root: {
@@ -28,23 +28,23 @@ const ExpansionPanel = withStyles({
   expanded: {},
 })(MuiExpansionPanel);
 
-const ExpansionPanelSummary = withStyles({
+const ExpansionPanelSummary = withStyles(theme => ({
   root: {
     backgroundColor: 'rgba(0, 0, 0, .03)',
     borderBottom: '1px solid rgba(0, 0, 0, .125)',
     marginBottom: -1,
-    minHeight: 30,
+    minHeight: 20,
     '&$expanded': {
-      minHeight: 30,
+      minHeight: 20,
     },
   },
   content: {
     '&$expanded': {
-      margin: '12px 0',
+      margin: '10px 0',
     },
   },
   expanded: {},
-})(MuiExpansionPanelSummary);
+}))(MuiExpansionPanelSummary);
 
 const ExpansionPanelDetails = withStyles(theme => ({
   root: {
@@ -59,15 +59,16 @@ export default function CustomizedExpansionPanels(props) {
     setExpanded(newExpanded ? panel : false);
   };
 
+
   return (
     <div>
       <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>{props.panelName}</Typography>
+          <Typography>{props.panelName}<ArrowDropDownIcon/></Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-          <Grid>{props.content}</Grid>
+          {props.children}
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

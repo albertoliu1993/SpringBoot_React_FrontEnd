@@ -6,7 +6,7 @@ const initialState = {
     name: null,
     error: null,
     loading: false,
-    authRedirectPath: '/'
+    authRedirectPath: '/search'
 };
 
 const authStart = (state, action) => {
@@ -28,7 +28,7 @@ const authSuccess = (state, action) => {
 const authFail = (state, action) => {
     return updateObject(state, {
         error: action.error,
-        loading: false
+        loading: false,
     });
 };
 
